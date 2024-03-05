@@ -4,8 +4,8 @@ Past Events: <br>
 <% @past_events.each do |pe| %>
   <%= link_to pe.title, event_path(pe) %> <br>
 <% end %> <br>
-Future Events:<br>
-<% @future_events.each do |e| %>
+Upcoming Events:<br>
+<% @futur_events.each do |e| %>
   <%= link_to e.title, event_path(e) %> <br>
 <% end %> <br>
 
