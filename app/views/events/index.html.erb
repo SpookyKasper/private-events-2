@@ -1,2 +1,7 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>All Events</h1>
+
+<% @events.each do |e| %>
+  <%= link_to e.title, event_path(e) %> <br>
+<% end %> <br>
+
+<%= button_to 'Create Event', new_event_path, method: :get%>
