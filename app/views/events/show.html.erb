@@ -4,3 +4,5 @@
   location: <%= @event.location %> <br>
   date: <%= @event.event_date %>
 </div>
+
+<%= button_to 'Participate', attendings_path(@event)%>
