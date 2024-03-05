@@ -14,11 +14,14 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= button_to 'Events', :root, method: :get %>
-    <% if current_user %>
-      <%= button_to 'Log-out', destroy_user_session_path, method: :delete %>
-      <p>You are currently logged-in as: <%= current_user.email %></p>
-    <% end %>
+    <div class="nav">
+      <%= button_to 'Home', :root, method: :get %><br>
+      <% if current_user %>
+        <%= button_to 'My Events', user_path(current_user), method: :get %><br>
+        <%= button_to 'Log-out', destroy_user_session_path, method: :delete %>
+        <p>You are currently logged-in as: <%= current_user.email %></p>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

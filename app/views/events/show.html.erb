@@ -10,7 +10,8 @@
 </div><br>
 
 <% if current_user == @event.creator %>
-  <%= button_to 'Edit', edit_event_path(@event), method: :get%>
+  <%= button_to 'Edit Event', edit_event_path(@event), method: :get%>
+  <%= button_to 'Delete Event', event_path(@event), method: :delete%>
 <% end %>
 
 <% if @attendees.include?(current_user) %>

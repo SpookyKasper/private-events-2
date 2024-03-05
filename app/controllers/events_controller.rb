@@ -26,6 +26,26 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render :edit, status: 422 #uprocessable_entity
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      flash[:notice] = 'Event deletion completed'
+      redirect_to :root
+    else
+      flash[:alert] = 'Event deletion failed'
+    end
+  end
+
   def show
     @event = Event.find(params[:id])
     @attendees = @event.attendees
