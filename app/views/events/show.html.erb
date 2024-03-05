@@ -1,8 +1,16 @@
 <h1><%= @event.title %></h1>
 
 <div class="event-details">
-  location: <%= @event.location %> <br>
-  date: <%= @event.event_date %>
-</div>
+  Location: <%= @event.location %><br>
+  Date: <%= @event.event_date %><br>
+  Attendees:<br>
+  <% @attendees.each do |a| %>
+    <%= link_to a.email, user_path(a) %>
+  <% end %>
+</div><br>
 
-<%= button_to 'Participate', attendings_path(@event)%>
+<% if @attendees.include?(current_user) %>
+  <%= button_to 'Cancel participation'%>
+<% else %>
+  <%= button_to 'Participate', attendings_path(@event)%>
+<% end %>

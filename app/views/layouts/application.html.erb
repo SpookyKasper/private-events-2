@@ -15,6 +15,9 @@
     <p class="alert"><%= alert %></p>
 
     <%= button_to 'Home', :root, method: :get %>
+    <% if current_user %>
+      <%= button_to 'Log-out', destroy_user_session_path, method: :delete %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

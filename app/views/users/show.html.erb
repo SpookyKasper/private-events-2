@@ -1,5 +1,15 @@
 <h1><%= @user.email%>'s Events</h1>
 
-<% @events.each do |e| %>
-  <%= e.title %>
-<% end %>
+<div class="created-events">
+  Created: <br><br>
+  <% @created_events.each do |e| %>
+    <%= link_to e.title, event_path(e) %> <br>
+  <% end %>
+</div><br>
+
+<div class="attending-events">
+  Attending: <br><br>
+  <% @attended_events.each do |e| %>
+    <%= link_to e.title, event_path(e) %> <br>
+  <% end %>
+</div>
