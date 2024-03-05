@@ -10,6 +10,14 @@
 <div class="attending-events">
   Attending: <br><br>
   <% @attended_events.each do |e| %>
-    <%= link_to e.title, event_path(e) %> <br>
+    <% if e.event_date > Time.new %>
+      <%= link_to e.title, event_path(e) %> <br>
+    <% end %>
+  <% end %><br><br>
+  Attended:<br><br>
+  <% @attended_events.each do |e| %>
+    <% if e.event_date < Time.new %>
+      <%= link_to e.title, event_path(e) %>
+    <% end %>
   <% end %>
 </div>
