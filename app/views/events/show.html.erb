@@ -5,7 +5,7 @@
   Date: <%= @event.event_date %><br>
   Attendees:<br>
   <% @attendees.each do |a| %>
-    <%= link_to a.email, user_path(a) %>
+    <%= link_to a.email, user_path(a) %><br>
   <% end %>
 </div><br>
 
@@ -15,7 +15,7 @@
 <% end %>
 
 <% if @attendees.include?(current_user) %>
-  <%= button_to 'Cancel participation'%>
+  <%= button_to 'Cancel participation', attending_path(@event), method: :delete%>
 <% else %>
   <%= button_to 'Participate', attendings_path(@event)%>
 <% end %>
