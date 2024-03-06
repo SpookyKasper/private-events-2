@@ -1,12 +1,19 @@
 <h1>All Events</h1>
 
 Past Events: <br>
+
 <% @past_events.each do |pe| %>
-  <%= link_to pe.title, event_path(pe) %> <br>
+  <% if [pe.creator, pe.attendees].flatten.include?(current_user) %>
+    <%= link_to pe.title, event_path(pe) %> <br>
+  <% end %>
 <% end %> <br>
+
 Upcoming Events:<br>
+
 <% @futur_events.each do |e| %>
-  <%= link_to e.title, event_path(e) %> <br>
+  <% if [e.creator, e.attendees].flatten.include?(current_user) %>
+    <%= link_to e.title, event_path(e) %> <br>
+  <% end %>
 <% end %> <br>
 
 <%= button_to 'Create Event', new_event_path, method: :get%>

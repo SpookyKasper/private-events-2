@@ -3,9 +3,14 @@
 <div class="event-details">
   Location: <%= @event.location %><br>
   Date: <%= @event.event_date %><br>
+  Created By: <%= @event.creator.email %><br>
   Attendees:<br>
   <% @attendees.each do |a| %>
-    <%= link_to a.email, user_path(a) %><br>
+    <% if a.email == current_user.email %>
+      <%= link_to 'Me', user_path(a) %><br>
+    <% else %>
+      <%= a.email %><br>
+    <% end %>
   <% end %>
 </div><br>
 
