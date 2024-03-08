@@ -3,18 +3,23 @@
 <div class="event-details">
   Location: <%= @event.location %><br>
   Date: <%= @event.event_date %><br>
-  Created By: <%= @event.creator.email %><br>
-  Attendees:<br>
+  Created By: <%= @event.creator.email %><br><br>
+  <strong>Attendees:</strong><br>
   <% @attendees.each do |a| %>
     <% if a.email == current_user.email %>
       <%= link_to 'Me', user_path(a) %><br>
     <% else %>
       <%= a.email %><br>
     <% end %>
+  <% end %><br>
+  <strong>Invitees:</strong><br>
+  <% @invitees.each do |i| %>
+   <%= i.email %><br>
   <% end %>
 </div><br>
 
 <% if current_user == @event.creator %>
+  <%= button_to 'Invite People', new_invitee_path(@event), method: :get %>
   <%= button_to 'Edit Event', edit_event_path(@event), method: :get%>
   <%= button_to 'Delete Event', event_path(@event), method: :delete%>
 <% end %>

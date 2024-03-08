@@ -1,0 +1,12 @@
+<h1>Invite People to <%= @event.title%> </h1>
+
+<%= @test %>
+
+<%= form_with model: @invitee do |form| %>
+  <%= form.hidden_field :event_id, value: @event.id %>
+  <%= form.label :email %>
+  <%= form.email_field :email %>
+  <%= form.submit 'Send Invite' %>
+<% end %>
+
+<%= button_to 'Back To Event', event_path(@event), method: :get%>
